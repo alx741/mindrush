@@ -2,3 +2,11 @@
     font-size: 5em;
     margin-top: 50px;
     text-align: center;
+
+#message
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 2px 2px 2px gray;

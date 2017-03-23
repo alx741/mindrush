@@ -1,0 +1,9 @@
+$(document).ready(fadeMessage());
+
+function fadeMessage(){
+    if( $('#message').is(':visible') ){
+        setTimeout(function(){
+            $('#message').fadeOut(1000);
+        }, 2000);
+    }
+}
