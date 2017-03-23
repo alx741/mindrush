@@ -20,6 +20,9 @@ data FileForm = FileForm
 getHomeR :: Handler Html
 getHomeR = do
     (formWidget, formEnctype) <- generateFormPost sampleForm
+
+    deleteSession "name"
+
     let submission = Nothing :: Maybe FileForm
         handlerName = "getHomeR" :: Text
     defaultLayout $ do

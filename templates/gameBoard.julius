@@ -1,11 +1,18 @@
-/* var gameState = null; */
-/* var interval; */
+var gameState = null;
+var interval;
 
-/* $(document).ready(function(){ */
-/*     interval = setInterval(sync, 3000); */
-/* }); */
+$(document).ready(function(){
+    $('#waiting').show();
+    /* sync(function(){ */
+    /*     console.log(gameState); */
+    /* }); */
+    interval = setInterval(sync, 1000*1);
+});
 
 
 function sync(){
-    alert("sync");
+    $.getJSON('@{GameStateR}', function(data){
+        gameState = data;
+        console.log(gameState.self);
+    });
 }
