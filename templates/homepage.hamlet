@@ -10,7 +10,7 @@
         <div .col-md-offset-3 .col-md-6 #rules>
             <h3>
                 Reglas del Juego
-                <span class="glyphicon" aria-hidden="true">▼
+                <span aria-hidden="true">▼
             <ul #rules-list>
                 <li>
                     Cada jugador debe responder <b>10 preguntas</b>

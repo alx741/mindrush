@@ -49,7 +49,6 @@ getGameR = do
 
     sessionName <- lookupSession "name"
     case sessionName of
-        -- Just name -> newPlayer name
         Just name -> do
             defaultLayout $ do
                 $(widgetFile "gameBoard")

@@ -1,0 +1,11 @@
+/* var gameState = null; */
+/* var interval; */
+
+/* $(document).ready(function(){ */
+/*     interval = setInterval(sync, 3000); */
+/* }); */
+
+
+function sync(){
+    alert("sync");
+}

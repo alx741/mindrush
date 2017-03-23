@@ -10,3 +10,10 @@
             margin: 0px 0px;
             padding: 5px;
             color: white;
+
+#questions
+    margin-top: 50px;
+    #waiting
+        text-align: center;
+        h4
+            font-size: 2em;
