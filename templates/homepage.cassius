@@ -17,6 +17,11 @@
         text-align: center;
         padding: 10px;
         width: 100%;
+    #name-empty
+        display: none;
+        margin: 10px 0px;
+    .empty-input
+        border-color: red;
 
     #start
         width: 100%;
