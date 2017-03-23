@@ -1,0 +1,12 @@
+#players
+    margin-top: 30px;
+
+    .player
+        margin: 10px 0px;
+        .progress
+            height: 40px;
+            margin: 0px 0px;
+        .player-name
+            margin: 0px 0px;
+            padding: 5px;
+            color: white;
