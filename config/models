@@ -1,4 +1,7 @@
 Player
     name Text
+    progress Int
     UniquePlayer name
     deriving Typeable
+    deriving Generic
+    deriving Show

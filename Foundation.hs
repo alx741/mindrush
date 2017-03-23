@@ -143,6 +143,7 @@ instance Yesod App where
     isAuthorized ProfileR _ = isAuthenticated
 
     isAuthorized GameR _ = return Authorized
+    isAuthorized GameStateR _ = return Authorized
 
     -- This function creates static content files in the static folder
     -- and names them based on a hash of their content. This allows
@@ -207,7 +208,9 @@ instance YesodAuth App where
         case x of
             Just (Entity uid _) -> return $ Authenticated uid
             Nothing -> Authenticated <$> insert Player
-                { playerName = credsIdent creds }
+                { playerName = credsIdent creds
+                , playerProgress = 0
+                }
 
     -- You can add other plugins like Google Email, email or OAuth here
     authPlugins app = [authOpenId Claimed []] ++ extraAuthPlugins

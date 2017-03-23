@@ -6,5 +6,6 @@
 
 / HomeR GET POST
 /game GameR GET POST
+/game/getState GameStateR GET
 
 /profile ProfileR GET
