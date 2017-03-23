@@ -1,16 +1,7 @@
-<div .container #main>
-    <div .row>
-        <div .col-md-offset-4 .col-md-4>
-            <h1>Speed Ask
-
 <div .container #players>
-    <div .row>
-        <div .col-md-offset-4 .col-md-4>
-            <h2>Jugadores
-
-    <div .row>
+    <div .row #player-self>
         <div .col-md-offset-2 .col-md-8>
-            <p> Jugador 1
+            <h3>#{name}
 
     <div .row>
         <div .col-md-offset-2 .col-md-8>

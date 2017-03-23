@@ -1,11 +1,6 @@
 #billboard
     text-align: center;
 
-    #main-logo
-        font-size: 5em;
-        margin-top: 50px;
-        text-align: center;
-
     h2
         font-size: 2em;
         margin-top: 50px;

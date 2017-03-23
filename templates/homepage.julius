@@ -13,7 +13,7 @@ new Vue({
             }
             else {
                 this.name = normalizeName(this.name);
-                alert('@{GameR}' + '/' + this.name);
+                window.location = '@{GameR}' + '?name=' + this.name;
             }
         }
     },
