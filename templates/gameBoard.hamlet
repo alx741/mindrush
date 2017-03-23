@@ -1,0 +1,21 @@
+<div .container #main>
+    <div .row>
+        <div .col-md-offset-4 .col-md-4>
+            <h1>Speed Ask
+
+<div .container #players>
+    <div .row>
+        <div .col-md-offset-4 .col-md-4>
+            <h2>Jugadores
+
+    <div .row>
+        <div .col-md-offset-2 .col-md-8>
+            <p> Jugador 1
+
+    <div .row>
+        <div .col-md-offset-2 .col-md-8>
+            <p> Jugador 2
+
+    <div .row>
+        <div .col-md-offset-2 .col-md-8>
+            <p> Jugador 3
