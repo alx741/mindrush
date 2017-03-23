@@ -22,7 +22,6 @@ library
                      Settings.StaticFiles
                      Handler.Common
                      Handler.Home
-                     Handler.Comment
                      Handler.Profile
                      Handler.Game
 
@@ -126,8 +125,7 @@ executable         speedask
 test-suite test
     type:              exitcode-stdio-1.0
     main-is:           Spec.hs
-    other-modules:     Handler.CommentSpec
-                       Handler.CommonSpec
+    other-modules:     Handler.CommonSpec
                        Handler.HomeSpec
                        Handler.ProfileSpec
                        TestImport
