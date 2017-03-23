@@ -12,11 +12,20 @@ new Vue({
                 $('#name').addClass('empty-input');
             }
             else {
-                alert("vamos " + this.name);
+                this.name = normalizeName(this.name);
+                alert('@{GameR}' + '/' + this.name);
             }
         }
     },
 });
+
+function normalizeName(string) {
+    return capitalize(string.toLowerCase());
+}
+
+function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 
 
