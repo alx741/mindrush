@@ -7,6 +7,26 @@
                 Responde preguntas a la máxima velocidad y demuestra tu conocimiento
 
     <div .row>
+        <div .col-md-offset-3 .col-md-6 #rules>
+            <h3>
+                Reglas del Juego
+                <span class="glyphicon" aria-hidden="true">▼
+            <ul #rules-list>
+                <li>
+                    Cada jugador debe responder <b>10 preguntas</b>
+                    <span .green>correctamente
+                    para ganar.
+                <li>
+                    Cada respuesta
+                    <span .green>correcta
+                    hace avanzar al jugador, pero cada respuesta
+                    <span .red>incorrecta
+                    lo hace retroceder.
+                <li>
+                    El <b>primer</b> jugador en completar el objetivo gana.
+
+
+    <div .row>
         <div .col-md-offset-4 .col-md-4>
             <input #name .form-control type=text placeholder="Tu nombre" v-model="name">
             <p #name-empty>

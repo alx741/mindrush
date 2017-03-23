@@ -6,9 +6,31 @@
         margin-top: 50px;
         text-align: center;
 
+    h3
+        margin-top: 10px;
+
+    .glyphicon
+        margin-left: 30px;
+
+    #rules
+        margin-top: 30px;
+        color: white;
+        background-color: #6699ff;
+        border-radius: 20px;
+        #rules-list
+            display: none;
+            margin-top: 30px;
+            li
+                font-size: 1.3em;
+
+    .green
+        color: #4f4;
+    .red
+        color: #f44;
+
     #name
         font-size: 1.3em;
-        margin-top: 80px;
+        margin-top: 50px;
         text-align: center;
         padding: 10px;
         width: 100%;
@@ -22,3 +44,4 @@
         width: 100%;
         font-size: 1.3em;
         margin-top: 10px;
+        margin-bottom: 50px;

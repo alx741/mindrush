@@ -27,6 +27,10 @@ function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+$('#rules').click(function(){
+    $('#rules-list').slideToggle();
+});
+
 
 
 /* document.getElementById(#{toJSON aDomId}).innerHTML = "This text was added by the Javascript part of the homepage widget."; */
