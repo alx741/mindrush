@@ -3,6 +3,7 @@
 module Handler.Game where
 
 import Import
+import Prelude (read)
 import System.Random
 import Data.Aeson
 import Answer
@@ -90,8 +91,54 @@ getQuestionR = do
         Just question -> return $ toJSON $ entityVal question
         Nothing -> notFound
 
-postQuestionR :: Handler Value
-postQuestionR = undefined
+postAnswerR :: Handler Value
+postAnswerR = do
+    postData <- fmap fst runRequestBody
+    mselfName <- lookupSession "name"
+    let selfName = fromMaybe "Anónimo" mselfName
+
+    let
+        questionKey :: Maybe Int
+        questionKey = fmap (read . unpack . snd) $ headMay postData
+
+        answerId :: Maybe Int
+        answerId = fmap (read . unpack . snd) $ lastMay postData
+
+    Just (Entity _ question) <- case questionKey of
+            Just qKey -> runDB $ selectFirst [QuestionKey ==. qKey] []
+            Nothing -> notFound
+
+    let correctness = case answerId of
+            Just ansId -> questionCorrectAnswer question == ansId
+            Nothing -> False
+
+    if correctness
+        then do
+            increaseProgress selfName
+            return $ toJSON ("correct" :: Text)
+        else do
+            decreaseProgress selfName
+            return $ toJSON ("wrong" :: Text)
+
+    where
+        increaseProgress name = do
+            mplayer <- runDB $ selectFirst [PlayerName ==. name] []
+            case mplayer of
+                Just (Entity playerId player) ->
+                    if playerProgress player == 10
+                        then return ()
+                        else runDB $ update playerId [PlayerProgress +=. 1]
+                Nothing -> notFound
+
+        decreaseProgress name = do
+            mplayer <- runDB $ selectFirst [PlayerName ==. name] []
+            case mplayer of
+                Just (Entity playerId player) ->
+                    if playerProgress player == 0
+                        then return ()
+                        else runDB $ update playerId [PlayerProgress -=. 1]
+                Nothing -> notFound
+
 
 questions :: [Question]
 questions =

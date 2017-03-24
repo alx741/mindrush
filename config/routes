@@ -6,7 +6,8 @@
 
 / HomeR GET POST
 /game GameR GET
-/game/question QuestionR GET POST
+/game/question QuestionR GET
+/game/answer AnswerR POST
 /game/getState GameStateR GET
 /purge PurgeR GET
 /populate PopulateR GET

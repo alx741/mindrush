@@ -70,3 +70,15 @@ function getQuestion(){
         $('#question').show();
     });
 }
+
+
+var send = {
+    "questionKey": 1,
+    "answerId": 2
+}
+
+function sendAnswer(){
+    $.post('@{AnswerR}', send, function(validation){
+        console.log(validation);
+    });
+}

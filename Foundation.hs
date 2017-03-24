@@ -147,6 +147,7 @@ instance Yesod App where
     isAuthorized PurgeR _ = return Authorized
     isAuthorized PopulateR _ = return Authorized
     isAuthorized QuestionR _ = return Authorized
+    isAuthorized AnswerR _ = return Authorized
 
     -- This function creates static content files in the static folder
     -- and names them based on a hash of their content. This allows
