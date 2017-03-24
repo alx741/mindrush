@@ -9,7 +9,7 @@ $(document).ready(function(){
     $('#bar1').css('width', '0%');
     $('#bar2').css('width', '0%');
     $('#bar3').css('width', '0%');
-    interval = setInterval(sync, 1000*1);
+    interval = setInterval(sync, 500);
 });
 
 
