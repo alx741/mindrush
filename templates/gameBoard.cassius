@@ -6,6 +6,9 @@
         .progress
             height: 40px;
             margin: 0px 0px;
+            background-color: #bbb;
+        .progress-disabled
+            background-color: gray;
         .player-name
             margin: 0px 0px;
             padding: 5px;
