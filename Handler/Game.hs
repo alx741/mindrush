@@ -3,6 +3,7 @@
 module Handler.Game where
 
 import Import
+import System.Random
 import Data.Aeson
 import Answer
 
@@ -48,7 +49,8 @@ getGameR = do
 
     sessionName <- lookupSession "name"
     case sessionName of
-        Just name -> defaultLayout $ setTitle "Speed Ask" >> $(widgetFile "gameBoard")
+        Just name ->
+            defaultLayout $ setTitle "Speed Ask" >> $(widgetFile "gameBoard")
         Nothing -> case mname of
                 Just name -> newPlayer name
                 Nothing -> redirect HomeR
@@ -80,9 +82,21 @@ getPopulateR = do
     runDB $ forM questions insert
     return "Populated"
 
+getQuestionR :: Handler Value
+getQuestionR = do
+    key <- liftIO $ randomRIO (1, length questions)
+    mquestion <- runDB $ selectFirst [QuestionKey ==. key] []
+    case mquestion of
+        Just question -> return $ toJSON $ entityVal question
+        Nothing -> notFound
+
+postQuestionR :: Handler Value
+postQuestionR = undefined
+
 questions :: [Question]
 questions =
     [ Question
+        1
         "wut 1?"
         (Answer 1 "a1")
         (Answer 2 "a2")
@@ -90,6 +104,7 @@ questions =
         (Answer 4 "a4")
         2
     , Question
+        2
         "wut 2?"
         (Answer 1 "a1")
         (Answer 2 "a2")
@@ -97,6 +112,7 @@ questions =
         (Answer 4 "a4")
         2
     , Question
+        3
         "wut 3?"
         (Answer 1 "a1")
         (Answer 2 "a2")
@@ -104,6 +120,7 @@ questions =
         (Answer 4 "a4")
         2
     , Question
+        4
         "wut 4?"
         (Answer 1 "a1")
         (Answer 2 "a2")
@@ -111,6 +128,3 @@ questions =
         (Answer 4 "a4")
         2
     ]
-
-postGameR :: Handler Html
-postGameR = error "Not yet implemented: postGameR"

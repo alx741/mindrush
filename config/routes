@@ -5,7 +5,8 @@
 /robots.txt RobotsR GET
 
 / HomeR GET POST
-/game GameR GET POST
+/game GameR GET
+/game/question QuestionR GET POST
 /game/getState GameStateR GET
 /purge PurgeR GET
 /populate PopulateR GET

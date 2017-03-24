@@ -94,6 +94,7 @@ library
                  , time
                  , case-insensitive
                  , wai
+                 , random
 
 executable         speedask
     if flag(library-only)

@@ -16,3 +16,6 @@ share [mkPersist sqlSettings, mkMigrate "migrateAll"]
 
 instance ToJSON Player
 instance FromJSON Player
+
+instance ToJSON Question
+instance FromJSON Question
