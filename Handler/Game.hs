@@ -74,5 +74,10 @@ addPlayer name = do
             redirect HomeR
         else runDB $ insert $ Player name 0
 
+getPurgeR :: Handler ()
+getPurgeR = do
+    runDB $ deleteWhere ([] :: [Filter Player])
+    return ()
+
 postGameR :: Handler Html
 postGameR = error "Not yet implemented: postGameR"
