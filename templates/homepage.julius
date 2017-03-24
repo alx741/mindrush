@@ -30,3 +30,11 @@ function capitalize(string) {
 $('#rules').click(function(){
     $('#rules-list').slideToggle();
 });
+
+$('#name').focusin(function(){
+    $('#name').attr('placeholder', '');
+});
+
+$('#name').focusout(function(){
+    $('#name').attr('placeholder', 'Tu nombre');
+});

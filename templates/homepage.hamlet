@@ -30,11 +30,11 @@
         <div .col-md-offset-4 .col-md-4>
             <input #name .form-control type=text placeholder="Tu nombre" v-model="name">
             <p #name-empty>
-                Necesitas un nombre para empezar
+                Necesitas un nombre para jugar
 
     <div .row>
         <div .col-md-offset-4 .col-md-4>
-            <a #start .btn .btn-success v-on:click="go()">Empezar!
+            <a #start .btn .btn-success v-on:click="go()">JUGAR
 
 
     <!-- <div .bs-docs-section> -->
