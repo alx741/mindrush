@@ -1,5 +1,5 @@
 {-# LANGUAGE PackageImports #-}
-import "speedask" Application (develMain)
+import "mindrush" Application (develMain)
 import Prelude (IO)
 
 main :: IO ()

@@ -28,7 +28,7 @@ getHomeR = do
     defaultLayout $ do
         let (commentFormId, commentTextareaId, commentListId) = commentIds
         aDomId <- newIdent
-        setTitle "Speed Ask"
+        setTitle "Mind Rush"
         $(widgetFile "homepage")
 
 postHomeR :: Handler Html

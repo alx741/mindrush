@@ -37,7 +37,7 @@ $maybe msg <- mmsg
 <div .container>
     <div .row>
         <div .col-md-offset-2 .col-md-8>
-            <h1 #main-logo>Speed Ask
+            <h1 #main-logo>Mind Rush
 
 ^{widget}
 

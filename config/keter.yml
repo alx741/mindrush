@@ -15,8 +15,8 @@ stanzas:
     #
     # The path given is for Stack projects. If you're still using cabal, change
     # to
-    # exec: ../dist/build/speedask/speedask
-    exec: ../dist/bin/speedask
+    # exec: ../dist/build/mindrush/mindrush
+    exec: ../dist/bin/mindrush
 
     # Command line options passed to your application.
     args: []
@@ -25,7 +25,7 @@ stanzas:
       # You can specify one or more hostnames for your application to respond
       # to. The primary hostname will be used for generating your application
       # root.
-      - www.speedask.com
+      - www.mindrush.com
 
     # Enable to force Keter to redirect to https
     # Can be added to any stanza
@@ -34,7 +34,7 @@ stanzas:
   # Static files.
   - type: static-files
     hosts:
-      - static.speedask.com
+      - static.mindrush.com
     root: ../static
 
     # Uncomment to turn on directory listings.
@@ -44,9 +44,9 @@ stanzas:
   - type: redirect
 
     hosts:
-      - speedask.com
+      - mindrush.com
     actions:
-      - host: www.speedask.com
+      - host: www.mindrush.com
         # secure: false
         # port: 80
 

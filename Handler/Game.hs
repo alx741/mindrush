@@ -51,7 +51,7 @@ getGameR = do
     sessionName <- lookupSession "name"
     case sessionName of
         Just name ->
-            defaultLayout $ setTitle "Speed Ask" >> $(widgetFile "gameBoard")
+            defaultLayout $ setTitle "Mind Rush" >> $(widgetFile "gameBoard")
         Nothing -> case mname of
                 Just name -> newPlayer name
                 Nothing -> redirect HomeR
@@ -61,7 +61,7 @@ getGameR = do
             setSession "name" name
             gameState <- getGameState
             liftIO $ print gameState
-            defaultLayout $ setTitle "Speed Ask" >> $(widgetFile "gameBoard")
+            defaultLayout $ setTitle "Mind Rush" >> $(widgetFile "gameBoard")
 
         addPlayer name = do
             players <- runDB $ selectList [] [Desc PlayerName]

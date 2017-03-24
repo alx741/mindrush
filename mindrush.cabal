@@ -1,4 +1,4 @@
-name:              speedask
+name:              mindrush
 version:           0.0.0
 cabal-version:     >= 1.8
 build-type:        Simple
@@ -96,13 +96,13 @@ library
                  , wai
                  , random
 
-executable         speedask
+executable         mindrush
     if flag(library-only)
         Buildable: False
 
     main-is:           main.hs
     hs-source-dirs:    app
-    build-depends:     base, speedask
+    build-depends:     base, mindrush
 
     ghc-options:       -threaded -rtsopts -with-rtsopts=-N
 
@@ -153,7 +153,7 @@ test-suite test
                 CPP
 
     build-depends: base
-                 , speedask
+                 , mindrush
                  , yesod-auth
                  , yesod-test >= 1.5.2 && < 1.6
                  , yesod-core
