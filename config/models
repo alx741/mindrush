@@ -5,3 +5,14 @@ Player
     deriving Typeable
     deriving Generic
     deriving Show
+
+Question
+    question Text
+    answer1 Answer
+    answer2 Answer
+    answer3 Answer
+    answer4 Answer
+    correctAnswer Int
+    deriving Typeable
+    deriving Generic
+    deriving Show
