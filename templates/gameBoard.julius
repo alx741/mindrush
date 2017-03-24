@@ -74,11 +74,34 @@ function getQuestion(){
 
 var send = {
     "questionKey": 1,
-    "answerId": 2
+    "answerId": 1
 }
 
 function sendAnswer(){
+    $('#question').hide();
+    $('#waiting').hide();
+    $('#correct').hide();
+    $('#wrong').hide();
+    $('#loading').show();
+
     $.post('@{AnswerR}', send, function(validation){
         console.log(validation);
+        $('#loading').hide();
+
+        if (validation == "correct"){
+            $('#correct').show();
+        }
+        else{
+            $('#wrong').show();
+        }
+
+        setTimeout(function(){
+            $('#correct').hide();
+            $('#wrong').hide();
+            getQuestion();
+        }, 2000);
+
+
+
     });
 }
