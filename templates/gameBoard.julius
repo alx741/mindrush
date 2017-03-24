@@ -1,6 +1,7 @@
 var gameState = null;
 var interval;
 var currentQuestionKey;
+var playing = false;
 
 $(document).ready(function(){
     $('#question').hide();
@@ -30,14 +31,16 @@ $.getJSON('@{GameStateR}', function(data){
             $('#player3').text(gameState.players[0].playerName)
             break;
     }
-        // TODO: debug only
-        /* $('#waiting').hide(); */
-        /* $('#question').show(); */
+
 
     // Start Game
     if (gameState.playersCount == 3){
-        $('#waiting').hide();
-        $('#question').show();
+
+        if (!playing) {
+            $('#waiting').hide();
+            $('#question').show();
+            playing = true;
+        }
 
         $('#bar1').css('width', gameState.self.playerProgress*10 + '%');
         $('#bar2').css('width', gameState.players[1].playerProgress*10 + '%');

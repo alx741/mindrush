@@ -30,17 +30,20 @@
         img
             max-width: 150px;
 
-    #question
-        background-color: #489;
-        border-radius: 20px;
+    #question>div
+        border: 2px solid #bbb;
+        border-radius: 10px;
         padding: 15px;
+
+    #question
+        background-color: white;
         a
             font-size: 1.2em;
             margin: 5px auto;
             text-align: center;
             width: 100%;
         #q
-            color: white;
+            color: black;
             text-align: center;
             font-weight: bold;
             margin: 10px 0px;
