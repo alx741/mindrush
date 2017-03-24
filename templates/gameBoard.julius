@@ -1,5 +1,6 @@
 var gameState = null;
 var interval;
+var currentQuestionKey;
 
 $(document).ready(function(){
     $('#question').hide();
@@ -15,38 +16,33 @@ function sync(){
 $.getJSON('@{GameStateR}', function(data){
     gameState = data;
 
+    switch (gameState.players.length){
+        case 0:
+            break;
+        case 1:
+            $('#bar2-container').removeClass('progress-disabled');
+            $('#player2').text(gameState.players[0].playerName)
+            break;
+        case 2:
+            $('#bar2-container').removeClass('progress-disabled');
+            $('#bar3-container').removeClass('progress-disabled');
+            $('#player2').text(gameState.players[1].playerName)
+            $('#player3').text(gameState.players[0].playerName)
+            break;
+    }
+        // TODO: debug only
+        /* $('#waiting').hide(); */
+        /* $('#question').show(); */
 
-switch (gameState.players.length){
-    case 0:
-        break;
-    case 1:
-        $('#bar2-container').removeClass('progress-disabled');
-        $('#player2').text(gameState.players[0].playerName)
-        break;
-    case 2:
-        $('#bar2-container').removeClass('progress-disabled');
-        $('#bar3-container').removeClass('progress-disabled');
-        $('#player2').text(gameState.players[1].playerName)
-        $('#player3').text(gameState.players[0].playerName)
-        break;
-}
-    // TODO: debug only
-    /* $('#waiting').hide(); */
-    /* $('#question').show(); */
+    // Start Game
+    if (gameState.playersCount == 3){
+        $('#waiting').hide();
+        $('#question').show();
 
-// Start Game
-if (gameState.playersCount == 3){
-    $('#waiting').hide();
-    $('#question').show();
-
-    $('#bar1').css('width', gameState.self.playerProgress*10 + '%');
-    $('#bar2').css('width', gameState.players[1].playerProgress*10 + '%');
-    $('#bar3').css('width', gameState.players[0].playerProgress*10 + '%');
-
-
-}
-
-
+        $('#bar1').css('width', gameState.self.playerProgress*10 + '%');
+        $('#bar2').css('width', gameState.players[1].playerProgress*10 + '%');
+        $('#bar3').css('width', gameState.players[0].playerProgress*10 + '%');
+    }
 });
 }
 
@@ -60,7 +56,7 @@ function getQuestion(){
     $('#loading').show();
 
     $.getJSON('@{QuestionR}', function(question){
-        console.log(question.questionQuestion);
+        currentQuestionKey = question.questionKey;
         $('#question #q').text(question.questionQuestion);
         $('#question #a1 a').text(question.questionAnswer1.answerText);
         $('#question #a2 a').text(question.questionAnswer2.answerText);
@@ -72,19 +68,19 @@ function getQuestion(){
 }
 
 
-var send = {
-    "questionKey": 1,
-    "answerId": 1
-}
-
-function sendAnswer(){
+function sendAnswer(answerId){
     $('#question').hide();
     $('#waiting').hide();
     $('#correct').hide();
     $('#wrong').hide();
     $('#loading').show();
 
-    $.post('@{AnswerR}', send, function(validation){
+    answer = {
+        "questionKey": currentQuestionKey,
+        "answerId": answerId
+    }
+
+    $.post('@{AnswerR}', answer, function(validation){
         console.log(validation);
         $('#loading').hide();
 
@@ -100,8 +96,26 @@ function sendAnswer(){
             $('#wrong').hide();
             getQuestion();
         }, 2000);
-
-
-
     });
+}
+
+
+$('#a1 a').click(function(){
+    setAnswerId(1);
+});
+
+$('#a2 a').click(function(){
+    setAnswerId(2);
+});
+
+$('#a3 a').click(function(){
+    setAnswerId(3);
+});
+
+$('#a4 a').click(function(){
+    setAnswerId(4);
+});
+
+function setAnswerId(id){
+    sendAnswer(id);
 }
