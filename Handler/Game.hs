@@ -4,6 +4,7 @@ module Handler.Game where
 
 import Import
 import Data.Aeson
+import Answer
 
 
 data GameState = GameState
@@ -21,17 +22,15 @@ instance FromJSON GameState
 
 getGameState = do
     mselfName <- lookupSession "name"
-    let selfName = case mselfName of
-            Just name -> name
-            Nothing -> "Anónimo"
+    let selfName = fromMaybe "Anónimo" mselfName
 
     self <- runDB $ selectList [PlayerName ==. selfName] []
     players <- runDB $ selectList [PlayerName !=. selfName] [Desc PlayerName]
     let players' = fmap entityVal players
-    let winner = filter (\p -> (playerProgress p) >= 10) players'
+    let winner = filter (\p -> playerProgress p >= 10) players'
 
     return $ GameState
-        ((length players) + 1)
+        (length players + 1)
         (headMay winner)
         (headMay (fmap entityVal self))
         players'
@@ -49,35 +48,69 @@ getGameR = do
 
     sessionName <- lookupSession "name"
     case sessionName of
-        Just name -> do
-            defaultLayout $ do
-                $(widgetFile "gameBoard")
-        Nothing -> do
-            let name = case mname of
-                    Just n -> n
-                    Nothing -> "Anónimo"
-            newPlayer name
+        Just name -> defaultLayout $(widgetFile "gameBoard")
+        Nothing -> case mname of
+                Just name -> newPlayer name
+                Nothing -> redirect HomeR
     where
         newPlayer name = do
             addPlayer name
             setSession "name" name
             gameState <- getGameState
             liftIO $ print gameState
-            defaultLayout $ do
-                $(widgetFile "gameBoard")
+            defaultLayout $(widgetFile "gameBoard")
 
-addPlayer name = do
-    players <- runDB $ selectList [] [Desc PlayerName]
-    if length players >= 3
-        then do
-            setMessage "El limite es de 3 jugadores"
-            redirect HomeR
-        else runDB $ insert $ Player name 0
+        addPlayer name = do
+            players <- runDB $ selectList [] [Desc PlayerName]
+            if length players >= 3
+                then do
+                    setMessage "El limite es de 3 jugadores"
+                    redirect HomeR
+                else runDB $ insert $ Player name 0
 
-getPurgeR :: Handler ()
+
+getPurgeR :: Handler Text
 getPurgeR = do
     runDB $ deleteWhere ([] :: [Filter Player])
-    return ()
+    return "Purged"
+
+getPopulateR :: Handler Text
+getPopulateR = do
+    runDB $ deleteWhere ([] :: [Filter Question])
+    runDB $ forM questions insert
+    return "Populated"
+
+questions :: [Question]
+questions =
+    [ Question
+        "wut 1?"
+        (Answer 1 "a1")
+        (Answer 2 "a2")
+        (Answer 3 "a3")
+        (Answer 4 "a4")
+        2
+    , Question
+        "wut 2?"
+        (Answer 1 "a1")
+        (Answer 2 "a2")
+        (Answer 3 "a3")
+        (Answer 4 "a4")
+        2
+    , Question
+        "wut 3?"
+        (Answer 1 "a1")
+        (Answer 2 "a2")
+        (Answer 3 "a3")
+        (Answer 4 "a4")
+        2
+    , Question
+        "wut 4?"
+        (Answer 1 "a1")
+        (Answer 2 "a2")
+        (Answer 3 "a3")
+        (Answer 4 "a4")
+        2
+    ]
 
 postGameR :: Handler Html
 postGameR = error "Not yet implemented: postGameR"

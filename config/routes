@@ -8,5 +8,6 @@
 /game GameR GET POST
 /game/getState GameStateR GET
 /purge PurgeR GET
+/populate PopulateR GET
 
 /profile ProfileR GET

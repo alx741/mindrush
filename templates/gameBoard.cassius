@@ -16,12 +16,20 @@
 
 #questions
     margin: 50px auto;
+
     #waiting
         text-align: center;
         h4
             font-size: 2em;
-        #loading
+        #waiting-img
             max-width: 250px;
+
+    .symbol
+        display: none;
+        text-align: center;
+        img
+            max-width: 150px;
+
     #question
         background-color: #489;
         border-radius: 20px;
