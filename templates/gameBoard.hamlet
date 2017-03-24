@@ -1,4 +1,4 @@
-<div .container-fluid #players>
+<div .container #players>
     <div .row #player-self .player>
         <div .col-md-offset-1 .col-md-10>
             <div .progress>
@@ -7,25 +7,43 @@
 
     <div .row .player>
         <div .col-md-offset-1 .col-md-10>
-            <div .progress>
-                <div #bar2 .progress-bar .progress-bar-info .progress-disabled role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                    <h3 .player-name #player2>Jugador 2
+            <div #bar2-container .progress .progress-disabled>
+                <div #bar2 .progress-bar .progress-bar-info role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                    <h3 .player-name #player2>
 
     <div .row .player>
         <div .col-md-offset-1 .col-md-10>
-            <div .progress>
-                <div #bar3 .progress-bar .progress-bar-warning .progress-disabled role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                    <h3 .player-name #player3>Jugador 3
+            <div #bar3-container .progress .progress-disabled>
+                <div #bar3 .progress-bar .progress-bar-warning role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                    <h3 .player-name #player3>
 
 
 
-<div .container-fluid #questions>
+<div .container #questions>
     <div .row #waiting>
-        <div .col-md-offset-1 .col-md-10>
+        <div .col-md-offset-2 .col-md-8>
             <h4>
                 Esperando Jugadores...
+            <img #loading src=@{StaticR img_loading_gif}>
 
     <div .row #question>
-        <div .col-md-offset-1 .col-md-10>
+        <div .col-md-offset-3 .col-md-6>
             <p #q>
                 ¿WUT?
+            <hr>
+            <div .row #a1>
+                <div .col-md-12>
+                    <a .btn .btn-info>
+                        Repuesta 1
+            <div .row #a2>
+                <div .col-md-12>
+                    <a .btn .btn-info>
+                        Repuesta 2
+            <div .row #a3>
+                <div .col-md-12>
+                    <a .btn .btn-info>
+                        Repuesta 3
+            <div .row #a4>
+                <div .col-md-12>
+                    <a .btn .btn-info>
+                        Repuesta 4

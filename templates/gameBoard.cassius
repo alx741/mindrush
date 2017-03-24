@@ -8,15 +8,32 @@
             margin: 0px 0px;
             background-color: #bbb;
         .progress-disabled
-            background-color: gray;
+            background-color: #eee;
         .player-name
             margin: 0px 0px;
             padding: 5px;
             color: white;
 
 #questions
-    margin-top: 50px;
+    margin: 50px auto;
     #waiting
         text-align: center;
         h4
             font-size: 2em;
+        #loading
+            max-width: 250px;
+    #question
+        background-color: #489;
+        border-radius: 20px;
+        padding: 15px;
+        a
+            font-size: 1.2em;
+            margin: 5px auto;
+            text-align: center;
+            width: 100%;
+        #q
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            margin: 10px 0px;
+            font-size: 25px;
