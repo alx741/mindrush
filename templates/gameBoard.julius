@@ -49,3 +49,24 @@ if (gameState.playersCount == 3){
 
 });
 }
+
+
+
+function getQuestion(){
+    $('#question').hide();
+    $('#waiting').hide();
+    $('#correct').hide();
+    $('#wrong').hide();
+    $('#loading').show();
+
+    $.getJSON('@{QuestionR}', function(question){
+        console.log(question.questionQuestion);
+        $('#question #q').text(question.questionQuestion);
+        $('#question #a1 a').text(question.questionAnswer1.answerText);
+        $('#question #a2 a').text(question.questionAnswer2.answerText);
+        $('#question #a3 a').text(question.questionAnswer3.answerText);
+        $('#question #a4 a').text(question.questionAnswer4.answerText);
+        $('#loading').hide();
+        $('#question').show();
+    });
+}
