@@ -59,3 +59,13 @@
                 <div .col-md-12>
                     <a .btn .btn-info>
                         Repuesta 4
+
+
+
+<div #winner>
+    <h3>
+        GANADOR
+    <h4 #winner-name>
+        Someone
+    <img src=@{StaticR img_winner_gif}>
+    <a .btn .btn-info href=@{PurgeR}>Continuar

@@ -27,15 +27,15 @@ getGameState = do
     let selfName = fromMaybe "Anónimo" mselfName
 
     self <- runDB $ selectList [PlayerName ==. selfName] []
-    players <- runDB $ selectList [PlayerName !=. selfName] [Desc PlayerName]
-    let players' = fmap entityVal players
-    let winner = filter (\p -> playerProgress p >= 10) players'
+    otherPlayers <- runDB $ selectList [PlayerName !=. selfName] [Desc PlayerName]
+    let otherPlayers' = fmap entityVal otherPlayers
+    winner <- runDB $ selectFirst [PlayerProgress >=. 10] []
 
     return $ GameState
-        (length players + 1)
-        (headMay winner)
+        (length otherPlayers + 1)
+        (fmap entityVal winner)
         (headMay (fmap entityVal self))
-        players'
+        otherPlayers'
 
 
 getGameStateR :: Handler Value
@@ -72,10 +72,10 @@ getGameR = do
                 else runDB $ insert $ Player name 0
 
 
-getPurgeR :: Handler Text
+getPurgeR :: Handler Html
 getPurgeR = do
     runDB $ deleteWhere ([] :: [Filter Player])
-    return "Purged"
+    redirect HomeR
 
 getPopulateR :: Handler Text
 getPopulateR = do

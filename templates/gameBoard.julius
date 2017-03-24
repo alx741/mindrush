@@ -33,9 +33,9 @@ $.getJSON('@{GameStateR}', function(data){
     }
 
 
-    // Start Game
     if (gameState.playersCount == 3){
 
+        // Start Game
         if (!playing) {
             $('#waiting').hide();
             $('#question').show();
@@ -45,6 +45,14 @@ $.getJSON('@{GameStateR}', function(data){
         $('#bar1').css('width', gameState.self.playerProgress*10 + '%');
         $('#bar2').css('width', gameState.players[1].playerProgress*10 + '%');
         $('#bar3').css('width', gameState.players[0].playerProgress*10 + '%');
+
+        // Winner
+        if (gameState.winner != null){
+            clearInterval(interval);
+            $('#questions').hide();
+            $('#winner-name').text(gameState.winner.playerName);
+            $('#winner').show();
+        }
     }
 });
 }
