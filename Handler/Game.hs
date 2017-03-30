@@ -27,7 +27,8 @@ getGameState = do
     let selfName = fromMaybe "Anónimo" mselfName
 
     self <- runDB $ selectList [PlayerName ==. selfName] []
-    otherPlayers <- runDB $ selectList [PlayerName !=. selfName] [Desc PlayerName]
+    otherPlayers <- runDB $
+        selectList [PlayerName !=. selfName] [Desc PlayerName]
     let otherPlayers' = fmap entityVal otherPlayers
     winner <- runDB $ selectFirst [PlayerProgress >=. 10] []
 
@@ -234,15 +235,24 @@ questions =
 
     , Question
         11
-        "¿Cuál de los siguientes, NO es un elemento químico?"
-        (Answer 1 "Boro")
-        (Answer 2 "Calcio")
-        (Answer 3 "Acero")
-        (Answer 4 "Fósforo")
+        "Que lee un quiromante para predecir el futuro:"
+        (Answer 1 "Las cartas")
+        (Answer 2 "Las estrellas")
+        (Answer 3 "Las líneas de la mano")
+        (Answer 4 "Las velas")
         3
 
     , Question
         12
+        "¿Cuál de los siguientes, NO es un elemento químico?"
+        (Answer 1 "Cobre")
+        (Answer 2 "Calcio")
+        (Answer 3 "Bronce")
+        (Answer 4 "Fósforo")
+        3
+
+    , Question
+        13
         "El albinismo se presenta por la carencia de:"
         (Answer 1 "Pigmentación")
         (Answer 2 "Calcio")
@@ -251,7 +261,7 @@ questions =
         1
 
     , Question
-        13
+        14
         "Uno de los libros de J. K. Rowling es Harry Potter y:"
         (Answer 1 "El arca perdida")
         (Answer 2 "El misterio del príncipe")
@@ -260,7 +270,7 @@ questions =
         2
 
     , Question
-        14
+        15
         "Las Vegas es una ciudad estadounidense que queda en:"
         (Answer 1 "Oklahoma")
         (Answer 2 "Nevada")
@@ -269,16 +279,52 @@ questions =
         2
 
     , Question
-        15
+        16
         "¿Que clase de palabra es \"según\"?"
         (Answer 1 "Verbo")
         (Answer 2 "Preposición")
         (Answer 3 "Adjetivo")
         (Answer 4 "Sustantivo")
+        2
+
+    , Question
+        17
+        "¿Cuál de los siguientes países no ha adoptado el euro?"
+        (Answer 1 "Luxemburgo")
+        (Answer 2 "Grecia")
+        (Answer 3 "Dinamarca")
+        (Answer 4 "Finlandia")
         3
 
     , Question
-        16
+        18
+        "Fecha de Independencia del Ecuador"
+        (Answer 1 "10 de agosto de 1810")
+        (Answer 2 "24 de mayo de 1810")
+        (Answer 3 "10 de agosto de 1820")
+        (Answer 4 "24 de mayo de 1820")
+        1
+
+    , Question
+        19
+        "¿Cuál de estas obras no fue escrita por William Shakespeare?"
+        (Answer 1 "Romeo y Julieta")
+        (Answer 2 "Hamlet")
+        (Answer 3 "La Divina Comedia")
+        (Answer 4 "Las alegres comadres de Windsor")
+        3
+
+    , Question
+        20
+        "La palabra \"trapo\" proviene del:"
+        (Answer 1 "Griego")
+        (Answer 2 "Árabe")
+        (Answer 3 "Latín")
+        (Answer 4 "Chino")
+        3
+
+    , Question
+        21
         "¿Cuál de los siguientes países limita con Francia?"
         (Answer 1 "Croacia")
         (Answer 2 "Alemania")
@@ -287,7 +333,7 @@ questions =
         2
 
     , Question
-        17
+        22
         "En la mitología griega, Eros es considerado el dios del:"
         (Answer 1 "Guerra")
         (Answer 2 "Tierra")
@@ -296,20 +342,83 @@ questions =
         3
 
     , Question
-        18
+        23
         "La jibia es un:"
         (Answer 1 "Insecto")
         (Answer 2 "Reptil")
         (Answer 3 "Molusco")
         (Answer 4 "Pez")
-        1
+        3
 
     , Question
-        19
+        24
         "La coroides es una membrana que se encuentra en:"
         (Answer 1 "El corazón")
         (Answer 2 "El ojo")
         (Answer 3 "El pulmón")
         (Answer 4 "El cerebro")
+        2
+
+    , Question
+        25
+        "¿Cuál es el significado del prefijo \"epi-\"?"
+        (Answer 1 "Alrededor")
+        (Answer 2 "Sobre")
+        (Answer 3 "Inferior")
+        (Answer 4 "Adentro")
+        2
+
+    , Question
+        26
+        "Es el espacio de tiempo durante el cual un Estado no tiene soberano:"
+        (Answer 1 "Internodio")
+        (Answer 2 "Internuncio")
+        (Answer 3 "Intermezzo")
+        (Answer 4 "Interregno")
+        4
+
+    , Question
+        27
+        "Hitler murió debido a:"
+        (Answer 1 "Suicidio")
+        (Answer 2 "Homicidio")
+        (Answer 3 "Accidente")
+        (Answer 4 "Caído en guerra")
+        1
+
+    , Question
+        28
+        "Las pantallas táctiles modernas son:"
+        (Answer 1 "Inductivas")
+        (Answer 2 "Resistivas")
+        (Answer 3 "Capacitivas")
+        (Answer 4 "Transitivas")
+        3
+
+    , Question
+        29
+        "¿De dónde se extrae el alcohol metílico?"
+        (Answer 1 "Madera")
+        (Answer 2 "Animales")
+        (Answer 3 "Caña")
+        (Answer 4 "Basura")
+        1
+
+    , Question
+        30
+        "La segunda guerra mundial terminó en:"
+        (Answer 1 "1930")
+        (Answer 2 "1892")
+        (Answer 3 "1990")
+        (Answer 4 "1945")
+        4
+
+    , Question
+        31
+        "El nombre químico de la sal es:"
+        (Answer 1 "Bicarbonato de Sodio")
+        (Answer 2 "Cloruro de Sodio")
+        (Answer 3 "Bicloruro de Sodio")
+        (Answer 4 "Carbonato de Sodio")
         2
     ]
