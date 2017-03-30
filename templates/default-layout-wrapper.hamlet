@@ -12,6 +12,9 @@ $newline never
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="shortcut icon" href=@{FaviconR}>
+    <link rel="icon" href=@{StaticR img_favicon_png}>
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     ^{pageHead pc}
