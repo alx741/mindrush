@@ -41,24 +41,19 @@
     <div .row #question>
         <div .col-md-offset-2 .col-md-8>
             <p #q>
-                ¿WUT?
             <hr>
             <div .row #a1>
                 <div .col-md-12>
                     <a .btn .btn-info>
-                        Repuesta 1
             <div .row #a2>
                 <div .col-md-12>
                     <a .btn .btn-info>
-                        Repuesta 2
             <div .row #a3>
                 <div .col-md-12>
                     <a .btn .btn-info>
-                        Repuesta 3
             <div .row #a4>
                 <div .col-md-12>
                     <a .btn .btn-info>
-                        Repuesta 4
 
 
 

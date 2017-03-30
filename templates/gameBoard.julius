@@ -37,8 +37,7 @@ $.getJSON('@{GameStateR}', function(data){
 
         // Start Game
         if (!playing) {
-            $('#waiting').hide();
-            $('#question').show();
+            getQuestion();
             playing = true;
         }
 
