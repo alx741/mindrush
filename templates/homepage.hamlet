@@ -1,5 +1,3 @@
-<!-- <div .masthead> -->
-
 <div .container #billboard>
     <div .row>
         <div .col-md-offset-3 .col-md-6>
@@ -8,65 +6,34 @@
     <div .row>
         <div .col-md-offset-3 .col-md-6>
             <h2>
-                Responde preguntas a la máxima velocidad y demuestra tu conocimiento
+                Answer questions as fast as posible and defeat your friends
 
     <div .row>
         <div .col-md-offset-3 .col-md-6 #rules>
             <h3>
-                Reglas del Juego
+                Game Rules
                 <span aria-hidden="true">▼
             <ul #rules-list>
                 <li>
-                    Cada jugador debe responder <b>10 preguntas</b>
-                    <span .green>correctamente
-                    para ganar.
+                    Each player have to answer <b>10 questions</b>
+                    <span .green>correctly
+                    in order to win.
                 <li>
-                    Cada respuesta
-                    <span .green>correcta
-                    hace avanzar al jugador, pero cada respuesta
-                    <span .red>incorrecta
-                    lo hace retroceder.
+                    Each
+                    <span .green>correct
+                    answer makes you advance, but each
+                    <span .red>incorrect
+                    answer takes you one step back.
                 <li>
-                    El <b>primer</b> jugador en completar el objetivo gana.
+                    The <b>first</b> player to reach 10 correct answers win.
 
 
     <div .row>
         <div .col-md-offset-4 .col-md-4>
-            <input #name .form-control type=text placeholder="Tu nombre" v-model="name">
+            <input #name .form-control type=text placeholder="Your name" v-model="name">
             <p #name-empty>
-                Necesitas un nombre para jugar
+                You need a name!
 
     <div .row>
         <div .col-md-offset-4 .col-md-4>
-            <a #start .btn .btn-success v-on:click="go()">JUGAR
-
-
-    <!-- <div .bs-docs-section> -->
-    <!--     <div .row> -->
-    <!--         <div .col-lg-12> -->
-    <!--             <div .page-header> -->
-    <!--                 <h1 #json>JSON -->
-
-    <!--                 <p> -->
-    <!--                     Yesod has JSON support baked-in. -->
-    <!--                     The form below makes an AJAX request with Javascript, -->
-    <!--                     then updates the page with your submission. -->
-    <!--                     (see <tt>Handler/Comment.hs</tt>, <tt>templates/homepage.julius</tt>, -->
-    <!--                     and <tt>Handler/Home.hs</tt> for the implementation). -->
-
-    <!--     <div .row> -->
-    <!--         <div .col-lg-6> -->
-    <!--             <div .bs-callout.bs-callout-info.well> -->
-    <!--                 <form .form-horizontal ##{commentFormId}> -->
-    <!--                     <div .field> -->
-    <!--                         <textarea rows="2" ##{commentTextareaId} placeholder="Your comment here..." required></textarea> -->
-
-    <!--                     <button .btn.btn-primary type=submit> -->
-    <!--                        Create comment -->
-
-    <!--        <div .col-lg-4.col-lg-offset-1> -->
-    <!--            <div .bs-callout.bs-callout-info> -->
-    <!--                <small> -->
-    <!--                    Your comments will appear here. You can also open the -->
-    <!--                    console log to see the raw response from the server. -->
-    <!--                <ul ##{commentListId}> -->
+            <a #start .btn .btn-success v-on:click="go()">PLAY
