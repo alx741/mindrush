@@ -24,7 +24,7 @@ instance FromJSON GameState
 
 getGameState = do
     mselfName <- lookupSession "name"
-    let selfName = fromMaybe "Anónimo" mselfName
+    let selfName = fromMaybe "Anonymous" mselfName
 
     self <- runDB $ selectList [PlayerName ==. selfName] []
     otherPlayers <- runDB $
@@ -68,7 +68,7 @@ getGameR = do
             players <- runDB $ selectList [] [Desc PlayerName]
             if length players >= 3
                 then do
-                    setMessage "El limite es de 3 jugadores"
+                    setMessage "There is a match going on, please try againt later"
                     redirect HomeR
                 else runDB $ insert $ Player name 0
 
@@ -96,7 +96,7 @@ postAnswerR :: Handler Value
 postAnswerR = do
     postData <- fmap fst runRequestBody
     mselfName <- lookupSession "name"
-    let selfName = fromMaybe "Anónimo" mselfName
+    let selfName = fromMaybe "Anonymous" mselfName
 
     let
         questionKey :: Maybe Int
