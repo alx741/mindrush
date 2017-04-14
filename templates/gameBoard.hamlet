@@ -23,7 +23,7 @@
     <div .row #waiting>
         <div .col-md-offset-2 .col-md-8>
             <h4>
-                Esperando Jugadores...
+                Waiting for more players...
             <img #waiting-img src=@{StaticR img_loading_gif}>
 
     <div .row .symbol #loading>
@@ -59,8 +59,8 @@
 
 <div #winner>
     <h3>
-        GANADOR
+        WINNER
     <h4 #winner-name>
         Someone
     <img src=@{StaticR img_winner_gif}>
-    <a .btn .btn-info href=@{PurgeR}>Continuar
+    <a .btn .btn-info href=@{PurgeR}>Continue
